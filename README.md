@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
             val json = JSONObject()
             json.put("orderId", "123456789")
             json.put("result", true)
-            //这里异步同步同时返回结果，但只有一种方法能接收到，取决于methodName是否为空串
+            //异步通知
             handler.callback(json.toString())
         }, 2000)
     }
