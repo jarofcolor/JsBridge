@@ -31,17 +31,17 @@ val jsBridge = WebViewJsBridge.create(webView, "bridge")
 ### 2、注册一个JS方法处理器
 
 ``` kotlin
-    val loginJsHandler = object : JsMethodHandler("login") {
-        override fun onJsCall(
-            handler: JsMethodHandler?,
-            methodName: String?,
-            params: String?
-        ): String {
-            return ""
-        }
+val loginJsHandler = object : JsMethodHandler("login") {
+    override fun onJsCall(
+        handler: JsMethodHandler?,
+        methodName: String?,
+        params: String?
+    ): String {
+        return ""
     }
+}
 
-    jsBridge.registerJsMethodHandler(loginJsHandler)       
+jsBridge.registerJsMethodHandler(loginJsHandler)       
 ```
 
 ### 3、异步回调结果给网页端
