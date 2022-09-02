@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>交互测试</title>
+</head>
+
+<script type="text/javascript">
+
+  window.clientcall = {}
+
+  //异步消息回调
+  window.clientcall.pay = function (res) {
+    alert("来自客户端返回的异步数据：" + res)
+  }
+
+  //同步消息
+  function login() {
+    var params = document.getElementById("input1").value;
+    var res = window.bridge.call("login", "", params)
+    alert("来自客户端返回的数据：" + res)
+  }
+
+  //异步消息
+  function pay() {
+    var params = document.getElementById("input2").value;
+    //传入回调函数
+    var res = window.bridge.call("pay", "window.clientcall.pay", params)
+  }
+</script>
+
+<body>
+<div>
+
+    <div>
+        <input placeholder="输入数据" id="input1" /><button onclick="login()">发送消息，同步接收数据</button>
+    </div>
+    <div>
+        <input placeholder="输入数据" id="input2"/><button onclick="pay()">发送消息，异步接收数据</button>
+    </div>
+</div>
+</body>
+
+</html>
