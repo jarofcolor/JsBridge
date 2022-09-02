@@ -66,7 +66,7 @@ var res = window.bridge.call("login", "", params)
 ```  javascript
 window.call = {}
 //定义回调函数，注意不要用内部函数，否则从客户端可能无法找到函数
-window.call.onLoginResult(data){console.log(data)}
+window.call.onLoginResult = function(data){console.log(data)}
 
 //创建一个异步请求，只要传入回调函数就是异步回调，结果通过该函数回调
 window.bridge.call("login", "window.call.onLoginResult", params)
